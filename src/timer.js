@@ -1,7 +1,12 @@
 class Timer {
-    constructor(time) {
+    constructor(time, direction, activity) {
         this.time = time;
-        this._interval = null;
+        this.direction = direction;
+        this.activity = activity
+
+        this.div = document.createElement("div");
+        this.div.id = `${this.activity}Timer`;
+        document.body.appendChild(this.div);
       }
 
     display() {
@@ -13,32 +18,74 @@ class Timer {
         if (minutes < 10){minutes = "0" + minutes;}
         if (hours < 10){hours = "0" + hours;}
         
-        document.getElementById("timer").innerHTML = 
-            `${hours} : ${minutes} : ${seconds}`;
-    }
+        this.div.innerHTML = `<h1>${this.activity}</h1>
+            <p>${hours} : ${minutes} : ${seconds}</p>`; 
+
+        this.startButtonDOM();
+        this.stopButtonDOM();
+        this.addButtonDOM();
+        this.subtractButtonDOM();
+    };
 
     countDown() {
-        this.time -= 1;
+        this.time --;
+        this.display();
+    }
+
+    countUp() {
+        this.time ++;
         this.display();
     }
 
     start() {
-        this._interval = setInterval(() => this.countDown(), 1000);
+        if (this.direction === "down"){
+            this._interval = setInterval(() => this.countDown(), 1000);
+        }
+        else if (this.direction === "up"){
+            this._interval = setInterval(() => this.countUp(), 1000);
+        }
       }
         
     stop() {
         clearInterval(this._interval);
-        this._interval = null;
     }
 
-    backFive() {
+    addFive() {
         this.time += 300;
         this.display();
     }
 
-    skipFive() {
+    subtractFive() {
         this.time -= 300;
         this.display();
+    }
+
+    startButtonDOM() {
+        const startButton = document.createElement("button");
+        startButton.innerHTML = "Start"
+        startButton.addEventListener("click", () => this.start());
+        this.div.appendChild(startButton)
+    }
+
+    stopButtonDOM() {
+        const stopButton = document.createElement("button");
+        stopButton.innerHTML = "Pause"
+        stopButton.addEventListener("click", () => this.stop());
+        this.div.appendChild(stopButton)
+    }
+
+    addButtonDOM() {
+        const addButton = document.createElement("button");
+        addButton.innerHTML = "Add 5 Mins";
+        addButton.addEventListener("click", () => this.addFive());
+        this.div.appendChild(addButton);
+    }
+
+    subtractButtonDOM() {
+        const subtractButton = document.createElement("button");
+        subtractButton.innerHTML = "Subtract 5 Mins";
+        subtractButton.addEventListener("click", () => this.subtractFive());
+        this.div.appendChild(subtractButton);
     }
 }
 

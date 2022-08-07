@@ -2,13 +2,16 @@ class Hundred {
     constructor() {
         this.count = 100;
         this.exerciseList = ["Chin Ups", "Push Ups", "Sit Ups"]
-        this.counter = document.createElement("div");
+
+        this.div = document.createElement("div");
+        this.div.id = "activity";
+        document.body.appendChild(this.div);        
     }
 
     createDropdown() {
         const select = document.createElement("select");
         select.id = "selection";
-        document.body.appendChild(select);
+        this.div.appendChild(select); 
 
         for (let i in this.exerciseList){
             const option = document.createElement("option");
@@ -18,27 +21,38 @@ class Hundred {
         }
     }
 
-    createCounter() {
-        document.body.appendChild(this.counter);
-        this.counter.innerHTML = this.count;
-    }
-
     display() {
-        this.counter.innerHTML = this.count
+        this.div.innerHTML = `<h1>Daily Exercise</h1>`
+        this.createDropdown();
+        this.div.innerHTML += `<p>${this.count}</p>`;
+        
+        this.oneButton();
+        this.tenButton();        
     }
 
-    // doneOne() {
-    //     count -= 1;
-    //     display();
-    // }
+    doneOne() {
+        this.count -= 1;
+        this.display();
+    }
 
     doneTen() {
         this.count -= 10;
         this.display();
     }
 
+    oneButton() {
+        const oneButton = document.createElement("button");
+        oneButton.innerHTML = "One";
+        oneButton.addEventListener("click", () => this.doneOne());
+        this.div.appendChild(oneButton);
+    }
+
+    tenButton() {
+        const tenButton = document.createElement("button");
+        tenButton.innerHTML = "Ten";
+        tenButton.addEventListener("click", () => this.doneTen());
+        this.div.appendChild(tenButton);
+    }
 }
-
-
 
 export {Hundred}
