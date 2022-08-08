@@ -1,6 +1,9 @@
+body{
+    text-align: center;
+}
+
 h1 {
     text-align: center;
-    padding-bottom: 30px;
 }
 
 h2 {
@@ -15,10 +18,29 @@ p {
 }
 
 div {
-    padding-top: 30px;
+    border-style: dashed;
+    border-radius: 5px;
+    border: 50;
+
+    height: 270px;
+    width: 300px;
+
+    display: inline-block;
     text-align: center;
+
+    margin: 30px 100px 30px 100px;
+    padding-top: 30px;
+    
 }
 
 button {
-    margin: 10px 1px 10px 10px;
+    margin: 20px 1px 10px 10px;
+    width: 100px;
+}
+
+#selection {
+    height: 35px;
+    width: 100px;
+    text-align: center;
+    font-size: 110%;
 }

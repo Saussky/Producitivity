@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "test": "mocha",
+    "watch": "webpack --watch",
     "build": "webpack"
   },
   "author": "",

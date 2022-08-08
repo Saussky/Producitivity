@@ -7,6 +7,8 @@ class Timer {
         this.div = document.createElement("div");
         this.div.id = `${this.activity}Timer`;
         document.body.appendChild(this.div);
+
+        this.display();
       }
 
     display() {
@@ -76,14 +78,14 @@ class Timer {
 
     addButtonDOM() {
         const addButton = document.createElement("button");
-        addButton.innerHTML = "Add 5 Mins";
+        addButton.innerHTML = "+ 5 Mins";
         addButton.addEventListener("click", () => this.addFive());
         this.div.appendChild(addButton);
     }
 
     subtractButtonDOM() {
         const subtractButton = document.createElement("button");
-        subtractButton.innerHTML = "Subtract 5 Mins";
+        subtractButton.innerHTML = "- 5 Mins";
         subtractButton.addEventListener("click", () => this.subtractFive());
         this.div.appendChild(subtractButton);
     }

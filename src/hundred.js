@@ -4,8 +4,10 @@ class Hundred {
         this.exerciseList = ["Chin Ups", "Push Ups", "Sit Ups"]
 
         this.div = document.createElement("div");
-        this.div.id = "activity";
-        document.body.appendChild(this.div);        
+        this.div.id = "Activity";
+        document.body.appendChild(this.div);
+        
+        this.display()
     }
 
     createDropdown() {
