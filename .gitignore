@@ -1,1 +1,6 @@
 node_modules
+test.html
+test.js
+data.csv
+.eslintrc.json
+webpack.config.js

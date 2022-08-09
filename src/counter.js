@@ -1,53 +1,51 @@
-class Counter{
-    constructor(item, measure){
-        this.count = 0;
-        this.item = item
-        this.measure = measure
+class Counter {
+  constructor(item, measure) {
+    this.count = 0;
+    this.item = item;
+    this.measure = measure;
 
-        this.div = document.createElement("div");
-        this.div.id = this.item;
-        document.body.appendChild(this.div);
+    this.div = document.createElement('div');
+    this.div.id = this.item;
+    document.body.appendChild(this.div);
+  }
 
-        this.display();
-    }
-
-    display() {
-        this.div.innerHTML = `<h1>${this.measure} of ${this.item}</h1>
+  display() {
+    this.div.innerHTML = `<h1>${this.measure} of ${this.item}</h1>
                               <p>${this.count}</p>`;
-        this.addButton();
-        const lineBreak = document.createElement("br");
-        this.div.appendChild(lineBreak);
-        this.subtractButton();
-    }
+    this.addButton();
+    const lineBreak = document.createElement('br');
+    this.div.appendChild(lineBreak);
 
-    addOne() {
-        this.count ++;
-        this.display();
-    }
+    this.subtractButton();
+  }
 
-    takeOne() {
-        this.count --;
-        this.display();
-    }
+  addOne() {
+    this.count += 1;
+    this.display();
+  }
 
-    addButton() {
-        const addOne = document.createElement("button");
-        addOne.innerHTML = "+1";
-        addOne.addEventListener("click", () => this.addOne());
-        this.div.appendChild(addOne);
-        
-    }
+  takeOne() {
+    this.count -= 1;
+    this.display();
+  }
 
-    subtractButton() {
-        const subOne = document.createElement("button");
-        subOne.innerHTML = "-1";
-        subOne.addEventListener("click", () => this.takeOne());
-        this.div.appendChild(subOne);
-    }
+  addButton() {
+    const addOne = document.createElement('button');
+    addOne.innerHTML = '+1';
+    addOne.addEventListener('click', () => this.addOne());
+    this.div.appendChild(addOne);
+  }
 
-    getCount() {
-        return this.count;
-    }
+  subtractButton() {
+    const subOne = document.createElement('button');
+    subOne.innerHTML = '-1';
+    subOne.addEventListener('click', () => this.takeOne());
+    this.div.appendChild(subOne);
+  }
+
+  getCount() {
+    return this.count;
+  }
 }
 
-export {Counter}
+export default Counter;
